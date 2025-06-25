@@ -13,10 +13,10 @@ export const getAllDepartments = async (_req: Request, res: Response) => {
       }
     });
 
-    const formatted = departments.map((dep) => ({
+    const formatted = departments.map((dep: any) => ({
       id: dep.id,
       nombre: dep.nombre,
-      cultivos: dep.cultivos.map((c) => c.cultivo.nombre)
+      cultivos: dep.cultivos.map((c: any) => c.cultivo.nombre)
     }));
 
     res.json(formatted);

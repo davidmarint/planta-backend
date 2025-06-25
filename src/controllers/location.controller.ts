@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
 
-export const getCultivosByLocation = async (req: Request, res: Response) => {
-  const { latitude, longitude } = req.body;
+export const getCultivosByLocation1 = async (_req: Request, res: Response): Promise<Response | void> => {
+  const { latitude, longitude } = _req.body;
 
   if (!latitude || !longitude) {
     return res.status(400).json({ error: 'Missing latitude or longitude' });
@@ -44,12 +44,12 @@ export const getCultivosByLocation = async (req: Request, res: Response) => {
     const result = {
       id: departamento.id,
       nombre: departamento.nombre,
-      cultivos: departamento.cultivos.map((c) => c.cultivo.nombre)
+      cultivos: departamento.cultivos.map((c: any) => c.cultivo.nombre)
     };
 
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error determining departamento from location' });
+    res.status(500).json({ error: 'Error determining departamento from location'});
   }
 };
