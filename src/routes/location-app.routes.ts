@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getCultivosByLocation1 } from '../controllers/location.controller';
+import { getCultivosByLocation } from '../controllers/location.controller';
 
 const router = Router();
 
-router.post('/', getCultivosByLocation1);
+router.post('/', getCultivosByLocation);
 
 export default router;

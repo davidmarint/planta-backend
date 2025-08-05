@@ -1,8 +1,11 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
 
-export const getCultivosByLocation1 = async (_req: Request, res: Response): Promise<Response | void> => {
+export const getCultivosByLocation = async (_req: Request, res: Response): Promise<Response | void> => {
   const { latitude, longitude } = _req.body;
+
+  //const latitude = parseFloat("4.15");
+  //const longitude = parseFloat("-73.633");
 
   if (!latitude || !longitude) {
     return res.status(400).json({ error: 'Missing latitude or longitude' });
